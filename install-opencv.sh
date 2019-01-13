@@ -18,7 +18,7 @@ fi
 
 # if [ -d /usr/local/Trolltech/Qt-5.10.0-rk64one-sdk ]; then
      CVSH=OpenCV-3.4.2-For-FriendlyCore-RK3399.sh
-#     PyVER=3.6
+     PyVER=3.6
 # elif [ -d /usr/local/Trolltech/Qt-5.10.0-nexell32-sdk ]; then
 #     CVSH=OpenCV-3.4.2-For-FriendlyCore-S5Pxx18-armhf.sh
 #     PyVER=3.5
