@@ -30,7 +30,7 @@ fi
 #     echo "Installation aborted."
 #     exit 1
 # fi
-CVSH=OpenCV-3.4.2-156-g80cab4a16-aarch64
+CVSH=OpenCV-3.4.2-156-g80cab4a16-aarch64.sh
 
 # if [ x"${LINUXFAMILY}" != "xnanopi4" -a x"${LINUXFAMILY}" != "xnanopi3" -a x"${LINUXFAMILY}" != "xnanopi2" ]; then
 #         echo "Only supports FriendlyELEC RK3399/S5P6818/S5P4418 platform."
