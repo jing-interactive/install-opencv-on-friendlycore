@@ -17,7 +17,7 @@ fi
 # . /etc/friendlyelec-release
 
 # if [ -d /usr/local/Trolltech/Qt-5.10.0-rk64one-sdk ]; then
-#     CVSH=OpenCV-3.4.2-For-FriendlyCore-RK3399.sh
+     CVSH=OpenCV-3.4.2-For-FriendlyCore-RK3399.sh
 #     PyVER=3.6
 # elif [ -d /usr/local/Trolltech/Qt-5.10.0-nexell32-sdk ]; then
 #     CVSH=OpenCV-3.4.2-For-FriendlyCore-S5Pxx18-armhf.sh
@@ -30,7 +30,6 @@ fi
 #     echo "Installation aborted."
 #     exit 1
 # fi
-CVSH=OpenCV-3.4.2-156-g80cab4a16-aarch64.sh
 
 # if [ x"${LINUXFAMILY}" != "xnanopi4" -a x"${LINUXFAMILY}" != "xnanopi3" -a x"${LINUXFAMILY}" != "xnanopi2" ]; then
 #         echo "Only supports FriendlyELEC RK3399/S5P6818/S5P4418 platform."
