@@ -9,33 +9,34 @@ if [ $(id -u) -ne 0 ]; then
 fi
 
 # check rom's version
-if [ ! -f /etc/friendlyelec-release ]; then
-	echo "Only supports FriendlyCore."
-        echo "Installation aborted."
-        exit 1
-fi
-. /etc/friendlyelec-release
+# if [ ! -f /etc/friendlyelec-release ]; then
+# 	echo "Only supports FriendlyCore."
+#         echo "Installation aborted."
+#         exit 1
+# fi
+# . /etc/friendlyelec-release
 
-if [ -d /usr/local/Trolltech/Qt-5.10.0-rk64one-sdk ]; then
-    CVSH=OpenCV-3.4.2-For-FriendlyCore-RK3399.sh
-    PyVER=3.6
-elif [ -d /usr/local/Trolltech/Qt-5.10.0-nexell32-sdk ]; then
-    CVSH=OpenCV-3.4.2-For-FriendlyCore-S5Pxx18-armhf.sh
-    PyVER=3.5
-elif [ -d /usr/local/Trolltech/Qt-5.10.0-nexell64-sdk ]; then
-    CVSH=OpenCV-3.4.2-For-FriendlyCore-S5Pxx18-arm64.sh
-    PyVER=3.5
-else
-    echo "Not found Qt-5.10.0 sdk, Please upgrade FriendlyCore to the latest version, download url: http://dl.friendlyarm.com/${BOARD}"
-    echo "Installation aborted."
-    exit 1
-fi
+# if [ -d /usr/local/Trolltech/Qt-5.10.0-rk64one-sdk ]; then
+#     CVSH=OpenCV-3.4.2-For-FriendlyCore-RK3399.sh
+#     PyVER=3.6
+# elif [ -d /usr/local/Trolltech/Qt-5.10.0-nexell32-sdk ]; then
+#     CVSH=OpenCV-3.4.2-For-FriendlyCore-S5Pxx18-armhf.sh
+#     PyVER=3.5
+# elif [ -d /usr/local/Trolltech/Qt-5.10.0-nexell64-sdk ]; then
+#     CVSH=OpenCV-3.4.2-For-FriendlyCore-S5Pxx18-arm64.sh
+#     PyVER=3.5
+# else
+#     echo "Not found Qt-5.10.0 sdk, Please upgrade FriendlyCore to the latest version, download url: http://dl.friendlyarm.com/${BOARD}"
+#     echo "Installation aborted."
+#     exit 1
+# fi
+CVSH=OpenCV-3.4.2-156-g80cab4a16-aarch64
 
-if [ x"${LINUXFAMILY}" != "xnanopi4" -a x"${LINUXFAMILY}" != "xnanopi3" -a x"${LINUXFAMILY}" != "xnanopi2" ]; then
-        echo "Only supports FriendlyELEC RK3399/S5P6818/S5P4418 platform."
-        echo "Installation aborted."
-        exit 1
-fi
+# if [ x"${LINUXFAMILY}" != "xnanopi4" -a x"${LINUXFAMILY}" != "xnanopi3" -a x"${LINUXFAMILY}" != "xnanopi2" ]; then
+#         echo "Only supports FriendlyELEC RK3399/S5P6818/S5P4418 platform."
+#         echo "Installation aborted."
+#         exit 1
+# fi
 
 TOPPATH=$PWD
 # download opencv package
@@ -47,13 +48,13 @@ if [ ! -f .cache/${CVSH} ]; then
 	curl -o .cache/download/${CVSH}.hash.md5 http://112.124.9.243/opencv/${CVSH}.hash.md5
 	rc=$?; if [ $rc != 0 ]; then exit $rc; fi;
 	cd .cache/download
-	if md5sum --status -c ${CVSH}.hash.md5; then
+	# if md5sum --status -c ${CVSH}.hash.md5; then
 		mv ${CVSH}* ../
-	else
-		echo "The file's md5sum didn't match, please check you network."
-		echo "Installation aborted."
-		exit 1
-	fi
+	# else
+	# 	echo "The file's md5sum didn't match, please check you network."
+	# 	echo "Installation aborted."
+	# 	exit 1
+	# fi
 fi
 cd ${TOPPATH}
 
@@ -65,11 +66,9 @@ apt-get -y autoremove
 # compiler 
 apt-get -y install build-essential
 
-# required ✓
-apt-get -y install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev checkinstall
+# required 鉁?apt-get -y install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev checkinstall
 
-# optional ✓
-apt-get -y install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev
+# optional 鉁?apt-get -y install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev
 
 # ffmpeg
 apt-get -y install x264 ffmpeg 
